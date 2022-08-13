@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+
+    <title>用户管理</title>
+</head>
+<body>
+<div class="container">
+    <div class="row mt-3 justify-content-center">
+        <div class="col-md-4">
+            <form method="post" action="/users">
+                <div class="mb-3">
+                    <label class="form-label">用户名称</label>
+                    <input type="username" name="username" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">密码</label>
+                    <input type="password" class="form-control" name="password" id="password">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input"
+                           id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check
+                        me
+                        out</label>
+                </div>
+                <textarea name="test" id="test" cols="30" rows="10"></textarea>
+                <button type="submit" class="btn btn-primary">添加</button>
+            </form>
+
+            <hr>
+            <ul class="list-group list-group-flush">
+                {{range $user := . -}}
+                <li class="list-group-item">{{$user.Username}} {{$user.Password}}</li>
+                {{- end}}
+            </ul>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
